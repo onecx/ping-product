@@ -1,5 +1,6 @@
 {
   "neverConnectToCloud": true,
+  "disableTelemetry": true,
   "affected": {
     "defaultBase": "main"
   },
@@ -28,6 +29,14 @@
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
       ]
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "skipCommit": true,
+        "skipCommitTypes": ["docs","ci"]
+      }
     }
   },
   "installation": {

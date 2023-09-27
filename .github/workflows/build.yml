@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+      - 'fix/[0-9]+.[0-9]+.x'
+    paths-ignore:
+      - '.gitignore'
+      - 'CODEOWNERS'
+      - 'LICENSE'
+      - '*.md'
+      - '*.adoc'
+      - '*.txt'
+      - '.all-contributorsrc'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_IMAGE_REGISTRY: 'ghcr.io'    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      # login to github docker registry in the organization
+      - uses: docker/login-action@v2
+        with:
+          registry: ${{ env.CONTAINER_IMAGE_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}          
+      # setup node.js
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.node }}
+          cache: 'npm'
+      - uses: nrwl/nx-set-shas@v3
+        id: nxshas
+
+      - run: npm ci
+      - run: npx nx format:check
+      - run: npx nx affected -t lint --parallel=3
+      - run: npx nx affected -t test --parallel=3
+      - run: npx nx affected -t build --parallel=3

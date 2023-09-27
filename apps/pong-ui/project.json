@@ -90,6 +90,14 @@
       "options": {
         "buildTarget": "pong-ui:build"
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "skipCommit": true,
+        "skipCommitTypes": ["docs","ci"]
+      }
     }
   }
 }

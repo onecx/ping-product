@@ -26,6 +26,13 @@
       "options": {
         "lintFilePatterns": ["libs/player/**/*.ts", "libs/player/**/*.html"]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "skipCommit": true
+      }
     }
   }
 }

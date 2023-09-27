@@ -90,6 +90,7 @@
       "options": {
         "buildTarget": "pong-ui:build"
       }
-    }
+    },
+    "version": {}    
   }
 }

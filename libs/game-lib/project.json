@@ -26,14 +26,6 @@
       "options": {
         "lintFilePatterns": ["libs/game-lib/**/*.ts", "libs/game-lib/**/*.html"]
       }
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "preset": "conventional",
-        "skipCommit": true,
-        "skipCommitTypes": ["docs","ci"]
-      }
     }
   }
 }

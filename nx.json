@@ -35,7 +35,22 @@
       "options": {
         "preset": "conventional",
         "skipCommit": true,
-        "skipCommitTypes": ["docs", "ci"]
+        "skipCommitTypes": ["docs", "ci"],
+        "skipRootChangelog": true,
+        "skipProjectChangelog": true
+      }
+    },
+    "github-release": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notes": "${notes}"
+      }
+    },
+    "npm-repo": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
       }
     }
   },
@@ -55,6 +70,9 @@
     },
     "@nx/angular:component": {
       "style": "scss"
+    },
+    "@nx/workspace:move": {
+      "projectNameAndRootFormat": "as-provided"
     }
   }
 }

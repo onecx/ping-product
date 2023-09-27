@@ -90,6 +90,7 @@
       "options": {
         "buildTarget": "ping-ui:build"
       }
-    }
+    },
+    "version": {}
   }
 }

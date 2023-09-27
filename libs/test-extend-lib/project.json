@@ -1,7 +1,7 @@
 {
-  "name": "test-lib",
+  "name": "test-extend-lib",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/test-lib/src",
+  "sourceRoot": "libs/test-extend-lib/src",
   "prefix": "lib",
   "tags": ["publish:npm"],
   "projectType": "library",
@@ -10,14 +10,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/test-lib/ng-package.json"
+        "project": "libs/test-extend-lib/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/test-lib/tsconfig.lib.prod.json"
+          "tsConfig": "libs/test-extend-lib/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/test-lib/tsconfig.lib.json"
+          "tsConfig": "libs/test-extend-lib/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
@@ -26,7 +26,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/test-lib/jest.config.ts",
+        "jestConfig": "libs/test-extend-lib/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -41,16 +41,16 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/test-lib/**/*.ts",
-          "libs/test-lib/**/*.html",
-          "libs/test-lib/package.json"
+          "libs/test-extend-lib/**/*.ts",
+          "libs/test-extend-lib/**/*.html",
+          "libs/test-extend-lib/package.json"
         ]
       }
     },
     "version": {
       "options": {
         "tagPrefix": "",
-        "postTargets": ["test-lib:npm-repo", "test-lib:github-release"]
+        "postTargets": ["test-extend-lib:npm-repo", "test-extend-lib:github-release"]        
       }
     }
   }

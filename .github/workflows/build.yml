@@ -37,10 +37,10 @@ jobs:
           node-version: ${{ inputs.node }}
           cache: 'npm'
       - uses: nrwl/nx-set-shas@v3
-        id: nxshas
+        id: nx-shas
       - run: npm install --package-lock-only
       - run: npm ci
-      # - run: npx nx format:check
-      - run: npx nx affected -t lint --parallel=3
-      - run: npx nx affected -t test --parallel=3
-      - run: npx nx affected -t build --parallel=3
+      - run: npx nx format:check --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} --verbose
+      - run: npx nx affected --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} -t lint --parallel=3
+      - run: npx nx affected --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} -t test --parallel=3
+      - run: npx nx affected --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} -t build --parallel=3

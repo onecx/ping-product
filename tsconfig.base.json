@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@onecx/test-lib": ["libs/test-lib/src/index.ts"],
       "@ping/game-lib": ["libs/game-lib/src/index.ts"],
       "@ping/player": ["libs/player/src/index.ts"]
     }

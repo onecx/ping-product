@@ -35,7 +35,7 @@
       "options": {
         "preset": "conventional",
         "skipCommit": true,
-        "skipCommitTypes": ["docs","ci"]
+        "skipCommitTypes": ["docs", "ci"]
       }
     }
   },

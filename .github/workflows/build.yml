@@ -38,7 +38,7 @@ jobs:
           cache: 'npm'
       - uses: nrwl/nx-set-shas@v3
         id: nxshas
-
+      - run: npm install --package-lock-only
       - run: npm ci
       - run: npx nx format:check
       - run: npx nx affected -t lint --parallel=3

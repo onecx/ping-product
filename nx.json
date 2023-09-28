@@ -35,6 +35,8 @@
       "options": {
         "preset": "conventional",
         "skipCommit": true,
+        "releaseAs": "prerelease",
+        "preid": "rc",
         "skipCommitTypes": ["docs", "ci"],
         "skipRootChangelog": true,
         "skipProjectChangelog": true
@@ -59,15 +61,7 @@
         "engine": "docker",
         "pull": true,
         "push": false,
-        "dependsOn": ["build"],
-        "tags": [
-          "type=schedule",
-          "type=ref,event=branch",
-          "type=ref,event=tag",
-          "type=ref,event=pr",
-          "type=semver,pattern={{version}},value=${version}",
-          "type=sha,prefix=sha-"       
-        ]        
+        "dependsOn": ["build"]       
       }
     }    
   },

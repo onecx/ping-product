@@ -93,13 +93,17 @@
     },
     "version": {
       "options": {
-        "postTargets": ["ping-ui:docker"]
+        "postTargets": ["ping-ui:build","ping-ui:docker"]
       }
     },
     "docker": {      
       "options": {
         "metadata": {
-          "images": ["ping-ui"]
+          "images": ["ping-ui"],
+          "tags": [
+            "type=ref,event=branch",
+            "type=semver,pattern={{version}},value=${version}"     
+          ]
         }
       }
     }

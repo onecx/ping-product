@@ -93,14 +93,16 @@
     },
     "version": {
       "options": {
-        "postTargets": ["pong-ui:docker"]
+        "postTargets": ["pong-ui:build", "pong-ui:docker"]
       }
     },
     "docker": {      
       "options": {
-        "metadata": {
-          "images": ["pong-ui"]         
-        }
+        "images": ["pong-ui"],
+        "tags": [
+          "type=ref,event=branch",
+          "type=semver,pattern={{version}},value=${version}"     
+        ]
       }
     }     
   }

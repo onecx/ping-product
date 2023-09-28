@@ -24,6 +24,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Setup Git
+        run: |
+          git config user.name "tkit-dev"
+          git config user.email "tkit-dev@1000kit.org"          
       # login to github docker registry in the organization
       - uses: docker/login-action@v2
         with:
@@ -42,7 +46,7 @@ jobs:
       - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t lint --parallel=3
       - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t test --parallel=3
       - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t build --parallel=3
-      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t version --projects=tag:publish:docker --parallel=3
+      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t version --exclude='*,!tag:publish:docker' --parallel=3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

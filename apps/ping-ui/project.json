@@ -101,8 +101,9 @@
         "metadata": {
           "images": ["ping-ui"],
           "tags": [
-            "type=ref,event=branch",
-            "type=semver,pattern={{version}},value=${version}"     
+            "type=raw,value={{branch}}",
+            "type=semver,pattern={{version}},value=${version}",
+            "type=raw,value=latest,enable={{is_default_branch}}"
           ]
         }
       }

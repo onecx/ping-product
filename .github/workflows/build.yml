@@ -37,10 +37,11 @@ jobs:
           node-version: ${{ inputs.node }}
           cache: 'npm'
       - uses: nrwl/nx-set-shas@v3
-        id: nx-shas
       - run: npm ci
       # - run: npx nx format:check --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} --verbose
-      - run: npx nx affected --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} -t lint --parallel=3
-      - run: npx nx affected --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} -t test --parallel=3
-      - run: npx nx affected --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} -t build --parallel=3
-      - run: npx nx affected --base=${{ steps.nx-shas.outputs.base }} --head=${{ steps.nx-shas.outputs.head }} -t docker --projects=tag:publish:docker --parallel=3
+      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t lint --parallel=3
+      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t test --parallel=3
+      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t build --parallel=3
+      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t docker --projects=tag:publish:docker --parallel=3
+        env:
+          INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

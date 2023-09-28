@@ -1,4 +1,4 @@
-FROM oci://ghcr.io/onecx/docker-spa-base:v1
+FROM ghcr.io/onecx/docker-spa-base:v1
 
 # Copy applicaiton build
 COPY apps/pong-ui/nginx/locations.conf $DIR_LOCATION/locations.conf

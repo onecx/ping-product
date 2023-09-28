@@ -50,7 +50,7 @@
     "version": {
       "options": {
         "tagPrefix": "",
-        "postTargets": ["test-lib:npm-repo", "test-lib:github-release"]
+        "postTargets": ["test-lib:npm-deploy", "test-lib:github-release"]
       }
     }
   }

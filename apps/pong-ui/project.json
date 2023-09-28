@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/pong-ui/src",
-  "tags": [],
+  "tags": ["publish:docker"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -91,6 +91,17 @@
         "buildTarget": "pong-ui:build"
       }
     },
-    "version": {}    
+    "version": {
+      "options": {
+        "postTargets": ["pong-ui:docker"]
+      }
+    },
+    "docker": {      
+      "options": {
+        "metadata": {
+          "images": ["pong-ui"]         
+        }
+      }
+    }     
   }
 }

@@ -47,12 +47,29 @@
         "notes": "${notes}"
       }
     },
-    "npm-repo": {
+    "npm-deploy": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
         "access": "public"
       }
-    }
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-container:build",
+      "options": {
+        "engine": "docker",
+        "pull": true,
+        "push": false,
+        "dependsOn": ["build"],
+        "tags": [
+          "type=schedule",
+          "type=ref,event=branch",
+          "type=ref,event=tag",
+          "type=ref,event=pr",
+          "type=semver,pattern={{version}},value=${version}",
+          "type=sha,prefix=sha-"       
+        ]        
+      }
+    }    
   },
   "installation": {
     "version": "16.9.0"

@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/ping-ui/src",
-  "tags": [],
+  "tags": ["publish:docker"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -91,6 +91,17 @@
         "buildTarget": "ping-ui:build"
       }
     },
-    "version": {}
+    "version": {
+      "options": {
+        "postTargets": ["ping-ui:docker"]
+      }
+    },
+    "docker": {      
+      "options": {
+        "metadata": {
+          "images": ["ping-ui"]
+        }
+      }
+    }
   }
 }

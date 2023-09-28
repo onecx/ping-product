@@ -99,7 +99,7 @@
     "docker": {      
       "options": {
         "metadata": {
-          "images": ["ping-ui"],
+          "images": ["ghcr.io/onecx/ping-ui"],
           "tags": [
             "type=raw,value={{branch}}",
             "type=semver,pattern={{version}},value=${version}",

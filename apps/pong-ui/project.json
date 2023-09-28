@@ -99,7 +99,7 @@
     "docker": {      
       "options": {
         "metadata": {
-          "images": ["pong-ui"],
+          "images": ["ghcr.io/onecx/pong-ui"],
           "tags": [
             "type=raw,value={{branch}}",
             "type=semver,pattern={{version}},value=${version}",

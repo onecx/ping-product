@@ -30,7 +30,7 @@
         "{workspaceRoot}/eslint.config.js"
       ]
     },
-    "publish": {
+    "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "conventional",

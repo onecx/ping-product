@@ -91,7 +91,7 @@
         "buildTarget": "ping-ui:build"
       }
     },
-    "publish": {
+    "version": {
       "options": {
         "postTargets": ["ping-ui:build","ping-ui:docker","ping-ui:helm"]
       }

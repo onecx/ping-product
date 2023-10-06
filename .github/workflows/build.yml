@@ -49,7 +49,7 @@ jobs:
       - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t lint --parallel=3
       - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t test --parallel=3
       - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t build --parallel=3
-      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t publish --exclude='*,!tag:publish:microservice' --parallel=1 --push
+      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t version --exclude='*,!tag:publish:microservice' --parallel=1 --push
         env:        
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

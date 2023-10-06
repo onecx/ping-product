@@ -93,20 +93,10 @@
     },
     "version": {
       "options": {
-        "postTargets": ["pong-ui:build","pong-ui:docker"]
+        "postTargets": ["pong-ui:build","pong-ui:docker","pong-ui:helm"]
       }
     },
-    "docker": {      
-      "options": {
-        "metadata": {
-          "images": ["ghcr.io/onecx/pong-ui"],
-          "tags": [
-            "type=raw,value={{branch}}",
-            "type=semver,pattern={{version}},value=${version}",
-            "type=raw,value=latest,enable={{is_default_branch}}"
-          ]
-        }
-      }
-    }
+    "docker": {},
+    "helm": {}    
   }
 }

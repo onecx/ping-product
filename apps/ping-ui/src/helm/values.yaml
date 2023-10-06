@@ -1,0 +1,6 @@
+app:
+  routing:
+    enabled: true
+  operator:
+    apm:
+      enabled: false

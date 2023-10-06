@@ -30,7 +30,7 @@
         "{workspaceRoot}/eslint.config.js"
       ]
     },
-    "version": {
+    "publish": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "conventional",
@@ -61,9 +61,39 @@
         "engine": "docker",
         "pull": true,
         "push": false,
-        "dependsOn": ["build"]       
+        "dependsOn": ["build"],
+        "metadata": {
+          "images": ["ghcr.io/onecx/{projectName}"],
+          "tags": [
+            "type=raw,value={{branch}}",
+            "type=semver,pattern={{version}},value=${version}",
+            "type=raw,value=latest,enable={{is_default_branch}}"
+          ]
+        }        
       }
-    }    
+    },
+    "helm": {
+      "executor": "@1000kit/nx-helm-plugin:build",
+      "options": {
+        "push": false,
+        "version": "${version}",
+        "registry": "oci://ghcr.io/onecx/charts",
+        "patchValuesYaml": {
+          "app": {
+            "image": {
+              "registry": "ghcr.io",
+              "tag": "${version}",
+              "repository": "onecx/{projectName}"
+            }
+          }
+        },
+        "patchChartYaml": {
+          "appVersion": "${version}",
+          "version": "${version}",
+          "name": "{projectName}"
+        }         
+      }
+    }
   },
   "installation": {
     "version": "16.9.0"

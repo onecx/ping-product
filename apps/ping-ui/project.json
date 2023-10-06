@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/ping-ui/src",
-  "tags": ["publish:docker"],
+  "tags": ["publish:microservice"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -91,22 +91,12 @@
         "buildTarget": "ping-ui:build"
       }
     },
-    "version": {
+    "publish": {
       "options": {
-        "postTargets": ["ping-ui:build","ping-ui:docker"]
+        "postTargets": ["ping-ui:build","ping-ui:docker","ping-ui:helm"]
       }
     },
-    "docker": {      
-      "options": {
-        "metadata": {
-          "images": ["ghcr.io/onecx/ping-ui"],
-          "tags": [
-            "type=raw,value={{branch}}",
-            "type=semver,pattern={{version}},value=${version}",
-            "type=raw,value=latest,enable={{is_default_branch}}"
-          ]
-        }
-      }
-    }
+    "docker": {},
+    "helm": {}
   }
 }

@@ -1,0 +1,22 @@
+apiVersion: v2
+appVersion: 0.0.0
+name: pong-ui
+version: 0.0.0
+description: Helm chart for ap-mgmt-ui deployment.
+home: https://gitlab.com:1000kit/apps/tkit-portal/onecx-portal-core-ui
+keywords:
+  - onecx
+  - permission
+  - 1000kit
+  - menu
+  - microfrontend
+sources:
+  - https://gitlab.com:1000kit/apps/tkit-portal/onecx-portal-core-ui.git
+maintainers:
+  - name: OneCX Developer Team
+    email: tkit_dev@1000kit.org
+dependencies:
+  - name: helm-angular-app
+    alias: app
+    version: ^0
+    repository: oci://ghcr.io/onecx/charts

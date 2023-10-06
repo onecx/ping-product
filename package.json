@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@1000kit/nx-helm-plugin": "^1.0.0",
+    "@1000kit/nx-helm-plugin": "1.1.0",
     "@angular-devkit/build-angular": "~16.2.0",
     "@angular-devkit/core": "~16.2.0",
     "@angular-devkit/schematics": "~16.2.0",

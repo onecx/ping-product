@@ -51,3 +51,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           INPUT_PUSH: "true"
+          INPUT_TKIT_HELM_PUSH: "true"
